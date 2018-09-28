@@ -2,10 +2,7 @@ package Tutorial;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +23,13 @@ public class MainController implements Initializable {
     @FXML private ComboBox comboBox;
     @FXML private Label comboBoxLabel;
 
+    //These items are for the radio buttons
+    @FXML private Label radioButtonsLabel;
+    @FXML private RadioButton phpRadioButton;
+    @FXML private RadioButton javaRadioButton;
+    @FXML private RadioButton cPlusPlusRadioButton;
+    @FXML private RadioButton cSharpRadioButton;
+    private ToggleGroup favLanguageToggleGroup;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,6 +46,26 @@ public class MainController implements Initializable {
         comboBox.getItems().add("COMP1030");
         comboBox.getItems().addAll("COMP1008","MGMT2003","MGMT2010");
         comboBoxLabel.setText("");
+
+        //These items are for the radio buttons
+        radioButtonsLabel.setText("");
+        favLanguageToggleGroup = new ToggleGroup();
+        phpRadioButton.setToggleGroup(favLanguageToggleGroup);
+        javaRadioButton.setToggleGroup(favLanguageToggleGroup);
+        cPlusPlusRadioButton.setToggleGroup(favLanguageToggleGroup);
+        cSharpRadioButton.setToggleGroup(favLanguageToggleGroup);
+
+    }
+
+    public void radioButtonChanged(){
+        if(favLanguageToggleGroup.getSelectedToggle().equals(phpRadioButton))
+            radioButtonsLabel.setText("The selected item is: PHP");
+        if(favLanguageToggleGroup.getSelectedToggle().equals(javaRadioButton))
+            radioButtonsLabel.setText("The selected item is: Java");
+        if(favLanguageToggleGroup.getSelectedToggle().equals(cPlusPlusRadioButton))
+            radioButtonsLabel.setText("The selected item is: C++");
+        if(favLanguageToggleGroup.getSelectedToggle().equals(cSharpRadioButton))
+            radioButtonsLabel.setText("The selected item is: C#");
     }
 
     public void comboBoxWasUpdated(){
