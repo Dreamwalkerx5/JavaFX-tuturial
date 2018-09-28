@@ -1,5 +1,6 @@
 package Tutorial;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -31,6 +32,10 @@ public class MainController implements Initializable {
     @FXML private RadioButton cSharpRadioButton;
     private ToggleGroup favLanguageToggleGroup;
 
+    //These items are for the ListView and TextArea examples
+    @FXML private ListView listView;
+    @FXML private TextArea golfTextArea;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pizzaToppingsLabel.setText("");
@@ -55,6 +60,21 @@ public class MainController implements Initializable {
         cPlusPlusRadioButton.setToggleGroup(favLanguageToggleGroup);
         cSharpRadioButton.setToggleGroup(favLanguageToggleGroup);
 
+        //These items are for the ListView and TextArea examples
+        listView.getItems().addAll("Golf balls","Wedges","Irons","Tees","Driver","Putter");
+        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+    }
+
+    public void listViewButtonPressed(){
+        String textAreaString = "";
+
+        ObservableList listOfItems = listView.getSelectionModel().getSelectedItems();
+        for(Object item : listOfItems){
+            textAreaString += String.format("%s%n",(String)item);
+        }
+
+        golfTextArea.setText(textAreaString);
     }
 
     public void radioButtonChanged(){
