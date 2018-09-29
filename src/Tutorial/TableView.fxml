@@ -15,11 +15,11 @@
          </font>
       </Label>
       <Button layoutX="628.0" layoutY="560.0" mnemonicParsing="false" onAction="#changeSceneButtonPressed" text="Go back to GUI Objects view" />
-      <TableView fx:id="tableView" layoutX="14.0" layoutY="41.0" prefHeight="200.0" prefWidth="501.0">
+      <TableView fx:id="tableView" editable="true" layoutX="14.0" layoutY="41.0" prefHeight="200.0" prefWidth="501.0">
         <columns>
-          <TableColumn fx:id="firstNameColumn" prefWidth="179.2000150680542" text="First Name" />
-          <TableColumn fx:id="lastNameColumn" prefWidth="197.59996032714844" text="Last Name" />
-            <TableColumn fx:id="birthdayColumn" minWidth="0.0" prefWidth="120.00006103515625" text="Birthday" />
+          <TableColumn fx:id="firstNameColumn" onEditCommit="#changeFirstName" prefWidth="179.2000150680542" text="First Name" />
+          <TableColumn fx:id="lastNameColumn" onEditCommit="#changeLastName" prefWidth="197.59996032714844" text="Last Name" />
+            <TableColumn fx:id="birthdayColumn" editable="false" minWidth="0.0" prefWidth="120.00006103515625" text="Birthday" />
         </columns>
       </TableView>
    </children>

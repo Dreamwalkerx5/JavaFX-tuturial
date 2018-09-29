@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -35,6 +36,11 @@ public class TableViewController implements Initializable {
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("lastName"));
         birthdayColumn.setCellValueFactory(new PropertyValueFactory<Person, LocalDate>("birthday"));
 
+        //Set the table to be editable for the first and last names
+        tableView.setEditable(true);
+        firstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        lastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
         //Load some dummy data
         tableView.setItems(getPeople());
 
@@ -49,6 +55,22 @@ public class TableViewController implements Initializable {
         people.add(new Person("Rebecca","Furgusson",LocalDate.of(1981, Month.JULY, 21)));
 
         return people;
+
+    }
+
+    //This method will allow a person to double click on a cell and update the first name of the Person
+    public void changeFirstName(TableColumn.CellEditEvent editedCell){
+
+        Person personSelected = tableView.getSelectionModel().getSelectedItem();
+        personSelected.setFirstName(editedCell.getNewValue().toString());
+
+    }
+
+    //This method will allow a person to double click on a cell and update the last name of the Person
+    public void changeLastName(TableColumn.CellEditEvent editedCell){
+
+        Person personSelected = tableView.getSelectionModel().getSelectedItem();
+        personSelected.setLastName(editedCell.getNewValue().toString());
 
     }
 

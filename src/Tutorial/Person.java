@@ -17,7 +17,7 @@ public class Person {
 
     public void setFirstName(String firstName) {
         this.firstName.set(firstName);
-    }
+        }
 
     public void setLastName(String lastName) {
         this.lastName.set(lastName);
