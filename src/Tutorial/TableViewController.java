@@ -9,8 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
@@ -27,6 +29,10 @@ public class TableViewController implements Initializable {
     @FXML private TableColumn<Person, String> firstNameColumn;
     @FXML private TableColumn<Person, String> lastNameColumn;
     @FXML private TableColumn<Person, LocalDate> birthdayColumn;
+    @FXML private TextField firstNameTextField;
+    @FXML private TextField lasttNameTextField;
+    @FXML private DatePicker birthdayDatePicker;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -57,6 +63,18 @@ public class TableViewController implements Initializable {
         return people;
 
     }
+
+    //This method will create a new Person Object and add it to the List
+    public void newPersonButtonPressed()
+    {
+        Person person = new Person(firstNameTextField.getText(),
+                                    lasttNameTextField.getText(),
+                                    birthdayDatePicker.getValue());
+
+        //Get all the items from the Table as a List and add our new Person to it
+        tableView.getItems().add(person);
+    }
+
 
     //This method will allow a person to double click on a cell and update the first name of the Person
     public void changeFirstName(TableColumn.CellEditEvent editedCell){
