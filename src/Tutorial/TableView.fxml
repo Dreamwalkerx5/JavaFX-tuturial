@@ -45,9 +45,10 @@
                   <Insets left="10.0" right="10.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="32.0" prefWidth="516.0">
+            <HBox prefHeight="32.0" prefWidth="516.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#newPersonButtonPressed" text="Add new Person" />
+                  <Button mnemonicParsing="false" onAction="#newPersonButtonPressed" prefHeight="26.0" prefWidth="179.0" text="Add new Person" />
+                  <Button mnemonicParsing="false" onAction="#deleteButtonPressed" prefHeight="26.0" prefWidth="182.0" text="Delete Person(s)" />
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />

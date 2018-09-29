@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
@@ -47,6 +44,9 @@ public class TableViewController implements Initializable {
         firstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         lastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        //This will allow the table to be able to select multiple rows at once
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         //Load some dummy data
         tableView.setItems(getPeople());
 
@@ -62,6 +62,15 @@ public class TableViewController implements Initializable {
 
         return people;
 
+    }
+
+    //This method will delete the selected row(s)
+    public void deleteButtonPressed()
+    {
+        ObservableList<Person> selectedRows, allPeople;
+        allPeople = tableView.getItems();
+        selectedRows = tableView.getSelectionModel().getSelectedItems();
+        allPeople.removeAll(selectedRows);
     }
 
     //This method will create a new Person Object and add it to the List
