@@ -1,23 +1,54 @@
 package Tutorial;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ResourceBundle;
 
 public class TableViewController implements Initializable {
 
-
+    @FXML private TableView<Person> tableView;
+    @FXML private TableColumn<Person, String> firstNameColumn;
+    @FXML private TableColumn<Person, String> lastNameColumn;
+    @FXML private TableColumn<Person, LocalDate> birthdayColumn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //Set up the columns in the table
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("lastName"));
+        birthdayColumn.setCellValueFactory(new PropertyValueFactory<Person, LocalDate>("birthday"));
+
+        //Load some dummy data
+        tableView.setItems(getPeople());
+
+    }
+
+    //This method will return an ObservableList of Person objects
+    private ObservableList<Person> getPeople() {
+
+        ObservableList<Person> people = FXCollections.observableArrayList();
+        people.add(new Person("Steven","Taylor",LocalDate.of(1966, Month.MAY, 30)));
+        people.add(new Person("Frank","Sinatra",LocalDate.of(1915, Month.DECEMBER, 12)));
+        people.add(new Person("Rebecca","Furgusson",LocalDate.of(1981, Month.JULY, 21)));
+
+        return people;
 
     }
 
