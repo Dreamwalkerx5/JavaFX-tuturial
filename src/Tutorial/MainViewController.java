@@ -1,14 +1,21 @@
 package Tutorial;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class MainViewController implements Initializable {
 
     //These items are for the CheckBox
     @FXML private Label pizzaToppingsLabel;
@@ -66,6 +73,19 @@ public class MainController implements Initializable {
 
     }
 
+    public void changeSceneButtonPressed(ActionEvent ev) throws IOException {
+
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("TableView.fxml"));
+        Scene tableVScene = new Scene(tableViewParent);
+
+        //This line gets the Stage information
+        Stage window = (Stage)((Node)ev.getSource()).getScene().getWindow();
+
+        window.setScene(tableVScene);
+        window.show();
+
+    }
+
     public void listViewButtonPressed(){
         String textAreaString = "";
 
@@ -108,5 +128,6 @@ public class MainController implements Initializable {
 
         pizzaToppingsLabel.setText(order);
     }
+
 
 }
