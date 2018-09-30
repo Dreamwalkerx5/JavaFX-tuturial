@@ -27,7 +27,7 @@ public class TableViewController implements Initializable {
     @FXML private TableColumn<Person, String> lastNameColumn;
     @FXML private TableColumn<Person, LocalDate> birthdayColumn;
     @FXML private TextField firstNameTextField;
-    @FXML private TextField lasttNameTextField;
+    @FXML private TextField lastNameTextField;
     @FXML private DatePicker birthdayDatePicker;
 
 
@@ -63,25 +63,52 @@ public class TableViewController implements Initializable {
         return people;
 
     }
+    //This method will create the detailed Person view and pass the selected Person Object to it
+    public void detailedViewButtonPressed(ActionEvent ev) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("PersonView.fxml"));
+        Parent tableViewParent = loader.load();
+
+        Scene tableVScene = new Scene(tableViewParent);
+
+        //Access the Controller so we can call it's method
+        PersonViewController controller = loader.getController();
+
+        //Pass the selected Person to the PersonView Controller
+        controller.initData(tableView.getSelectionModel().getSelectedItem());
+
+        //This line gets the Stage information
+        Stage window = (Stage)((Node)ev.getSource()).getScene().getWindow();
+
+        window.setScene(tableVScene);
+        window.show();
+
+    }
+
 
     //This method will delete the selected row(s)
     public void deleteButtonPressed()
     {
+
         ObservableList<Person> selectedRows, allPeople;
         allPeople = tableView.getItems();
         selectedRows = tableView.getSelectionModel().getSelectedItems();
         allPeople.removeAll(selectedRows);
+
     }
 
     //This method will create a new Person Object and add it to the List
     public void newPersonButtonPressed()
     {
+
         Person person = new Person(firstNameTextField.getText(),
-                                    lasttNameTextField.getText(),
+                                    lastNameTextField.getText(),
                                     birthdayDatePicker.getValue());
 
         //Get all the items from the Table as a List and add our new Person to it
         tableView.getItems().add(person);
+
     }
 
 

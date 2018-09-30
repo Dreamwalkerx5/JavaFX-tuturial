@@ -3,6 +3,7 @@ package Tutorial;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Person {
 
@@ -48,4 +49,8 @@ public class Person {
     }
 
 
+    public int getAge()
+    {
+        return Period.between(birthday,LocalDate.now()).getYears();
+    }
 }
