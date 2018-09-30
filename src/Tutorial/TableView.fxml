@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tutorial.TableViewController">
+<AnchorPane prefHeight="600.0" prefWidth="810.0" stylesheets="@Green_theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tutorial.TableViewController">
     <children>
         <Button layoutX="628.0" layoutY="560.0" mnemonicParsing="false" onAction="#changeSceneButtonPressed" text="Go back to GUI Objects view" />
         <VBox prefHeight="600.0" prefWidth="516.0" spacing="10.0">

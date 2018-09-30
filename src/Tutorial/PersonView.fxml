@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tutorial.PersonViewController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@Green_theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tutorial.PersonViewController">
     <children>
         <Button layoutX="712.0" layoutY="548.0" mnemonicParsing="false" onAction="#changeSceneButtonPressed" text="Back" />
       <VBox alignment="TOP_CENTER" layoutX="7.0" layoutY="6.0" prefHeight="506.0" prefWidth="786.0" spacing="40.0">
