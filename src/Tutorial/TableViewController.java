@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,6 +30,7 @@ public class TableViewController implements Initializable {
     @FXML private TextField firstNameTextField;
     @FXML private TextField lastNameTextField;
     @FXML private DatePicker birthdayDatePicker;
+    @FXML private Button detailedPersonViewButton;
 
 
     @Override
@@ -50,19 +52,29 @@ public class TableViewController implements Initializable {
         //Load some dummy data
         tableView.setItems(getPeople());
 
+        //Disable detailedPersonViewButton while no Person is selected
+        detailedPersonViewButton.setDisable(true);
     }
 
     //This method will return an ObservableList of Person objects
     private ObservableList<Person> getPeople() {
 
         ObservableList<Person> people = FXCollections.observableArrayList();
-        people.add(new Person("Steven","Taylor",LocalDate.of(1966, Month.MAY, 30)));
+        people.add(new Person("Steven","Taylor",LocalDate.of(1966, Month.MAY, 30),
+                new Image("file:Images/Tundra boy 3.jpg")));
         people.add(new Person("Frank","Sinatra",LocalDate.of(1915, Month.DECEMBER, 12)));
         people.add(new Person("Rebecca","Furgusson",LocalDate.of(1981, Month.JULY, 21)));
 
         return people;
 
     }
+
+    //This method will enable the detailedPersonViewButton when a selection is made in the table
+    public  void userClickedOnTable()
+    {
+        detailedPersonViewButton.setDisable(false);
+    }
+
     //This method will create the detailed Person view and pass the selected Person Object to it
     public void detailedViewButtonPressed(ActionEvent ev) throws IOException {
 

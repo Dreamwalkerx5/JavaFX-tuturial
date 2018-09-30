@@ -1,6 +1,5 @@
 package Tutorial;
 
-import Tutorial.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +21,7 @@ public class PersonViewController implements Initializable {
     @FXML private Label lastNameLabel;
     @FXML private Label birthdayLabel;
     @FXML private Label ageLabel;
+    @FXML private ImageView photo;
 
     private Person selectedPerson;
 
@@ -37,6 +38,7 @@ public class PersonViewController implements Initializable {
         lastNameLabel.setText(selectedPerson.getLastName());
         birthdayLabel.setText(selectedPerson.getBirthday().toString());
         ageLabel.setText(Integer.toString(selectedPerson.getAge()));
+        photo.setImage(selectedPerson.getPhoto());
     }
 
     public void changeSceneButtonPressed(ActionEvent ev) throws IOException {

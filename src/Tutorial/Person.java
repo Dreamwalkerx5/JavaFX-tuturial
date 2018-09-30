@@ -1,6 +1,7 @@
 package Tutorial;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.image.Image;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -9,11 +10,20 @@ public class Person {
 
     private SimpleStringProperty firstName, lastName;
     private LocalDate birthday;
+    private Image photo;
 
     public Person(String firstName, String lastName, LocalDate birthday) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.birthday = birthday;
+        this.photo = new Image("file:Images/defaultUser.png");
+    }
+
+    public Person(String firstName, String lastName, LocalDate birthday, Image photo) {
+        this.firstName = new SimpleStringProperty(firstName);
+        this.lastName = new SimpleStringProperty(lastName);
+        this.birthday = birthday;
+        this.photo = photo;
     }
 
     public void setFirstName(String firstName) {
@@ -52,5 +62,10 @@ public class Person {
     public int getAge()
     {
         return Period.between(birthday,LocalDate.now()).getYears();
+    }
+
+    public Image getPhoto()
+    {
+        return photo;
     }
 }
