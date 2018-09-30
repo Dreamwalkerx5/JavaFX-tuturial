@@ -27,7 +27,7 @@ public class PersonViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-
+        System.out.println("PersonView created!");
     }
 
     public void initData(Person selectedPerson)
