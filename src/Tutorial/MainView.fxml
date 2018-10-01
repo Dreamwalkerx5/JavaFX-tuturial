@@ -121,6 +121,8 @@
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
+                  <Button fx:id="getGradeButton" layoutX="23.0" layoutY="120.0" mnemonicParsing="false" onAction="#getGradeButtonPressed" text="Get Grade" />
+                  <Label fx:id="gradeLabel" layoutX="111.0" layoutY="124.0" text="Label" />
                </children>
             </AnchorPane>
          </children>

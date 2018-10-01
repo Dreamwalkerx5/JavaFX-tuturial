@@ -45,6 +45,8 @@ public class MainViewController implements Initializable {
 
     //These items are for the gradeSpinner
     @FXML private Spinner gradeSpinner;
+    @FXML private Button getGradeButton;
+    @FXML private Label gradeLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,6 +79,14 @@ public class MainViewController implements Initializable {
         //Configure the gradeSpinner with the values 1-100
         SpinnerValueFactory<Integer> gradesValueFactory =  new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 75);
         gradeSpinner.setValueFactory(gradesValueFactory);
+        gradeLabel.setVisible(false);
+    }
+
+    //This method will read from the grade Spinner and update the Label
+    public void getGradeButtonPressed()
+    {
+        gradeLabel.setText(gradeSpinner.getValue().toString());
+        gradeLabel.setVisible(true);
     }
 
     public void changeSceneButtonPressed(ActionEvent ev) throws IOException {
