@@ -12,6 +12,10 @@ public class Person {
     private LocalDate birthday;
     private Image photo;
 
+    public void setPhoto(Image photo) {
+        this.photo = photo;
+    }
+
     public Person(String firstName, String lastName, LocalDate birthday) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);

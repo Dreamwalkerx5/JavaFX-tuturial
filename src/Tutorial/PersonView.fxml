@@ -79,6 +79,7 @@
                   </padding>
               </GridPane>
             <ImageView fx:id="photo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Button mnemonicParsing="false" onAction="#chooseImageButtonPresssed" text="Change Image" />
          </children>
       </VBox>
     </children>
