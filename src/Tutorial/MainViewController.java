@@ -43,6 +43,9 @@ public class MainViewController implements Initializable {
     @FXML private ListView listView;
     @FXML private TextArea golfTextArea;
 
+    //These items are for the gradeSpinner
+    @FXML private Spinner gradeSpinner;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pizzaToppingsLabel.setText("");
@@ -71,6 +74,9 @@ public class MainViewController implements Initializable {
         listView.getItems().addAll("Golf balls","Wedges","Irons","Tees","Driver","Putter");
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+        //Configure the gradeSpinner with the values 1-100
+        SpinnerValueFactory<Integer> gradesValueFactory =  new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 75);
+        gradeSpinner.setValueFactory(gradesValueFactory);
     }
 
     public void changeSceneButtonPressed(ActionEvent ev) throws IOException {
