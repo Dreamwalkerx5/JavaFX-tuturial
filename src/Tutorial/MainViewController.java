@@ -24,11 +24,11 @@ public class MainViewController implements Initializable {
     @FXML private CheckBox baconCheckbox;
 
     //These items are for the ChoiceBox
-    @FXML private ChoiceBox choiceBox;
+    @FXML private ChoiceBox<String> choiceBox;
     @FXML private Label choiceBoxLabel;
 
     //These items are for the ComboBox
-    @FXML private ComboBox comboBox;
+    @FXML private ComboBox<String> comboBox;
     @FXML private Label comboBoxLabel;
 
     //These items are for the radio buttons
@@ -40,12 +40,11 @@ public class MainViewController implements Initializable {
     private ToggleGroup favLanguageToggleGroup;
 
     //These items are for the ListView and TextArea examples
-    @FXML private ListView listView;
+    @FXML private ListView<String> listView;
     @FXML private TextArea golfTextArea;
 
     //These items are for the gradeSpinner
-    @FXML private Spinner gradeSpinner;
-    @FXML private Button getGradeButton;
+    @FXML private Spinner<Integer> gradeSpinner;
     @FXML private Label gradeLabel;
 
     @Override
@@ -105,7 +104,7 @@ public class MainViewController implements Initializable {
     public void listViewButtonPressed(){
         String textAreaString = "";
 
-        ObservableList listOfItems = listView.getSelectionModel().getSelectedItems();
+        ObservableList<String> listOfItems = listView.getSelectionModel().getSelectedItems();
         for(Object item : listOfItems){
             textAreaString += String.format("%s%n",(String)item);
         }
@@ -125,11 +124,11 @@ public class MainViewController implements Initializable {
     }
 
     public void comboBoxWasUpdated(){
-        comboBoxLabel.setText("Course selected:\n" + comboBox.getValue().toString());
+        comboBoxLabel.setText("Course selected:\n" + comboBox.getValue());
     }
 
     public void choiceBoxButtonPressed(){
-        choiceBoxLabel.setText("My favourite fruit is\n" + choiceBox.getValue().toString());
+        choiceBoxLabel.setText("My favourite fruit is\n" + choiceBox.getValue());
     }
 
     public void pizzaOrderButtonPressed(){
